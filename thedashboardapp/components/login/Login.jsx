@@ -1,31 +1,42 @@
 "use client";
 
-import Link from "next/link"
-function Login() {
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+export default function Login() {
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // prevent full-page reload
+    // You can add login logic here (e.g., authentication)
+    router.push("/dashboardhomepage");
+  };
+
   return (
     <div className="login-signup-container">
-            <div className="login-container ">
-            <form action={"/dashboardhomepage"}>
-                        <h2>Welcome to The Dashboard </h2>
-                        <div className="input-field">
-                        <i>👤</i>
-                        <input type="text" placeholder="username" required/>
-                        </div>
+      <div className="login-container">
+        <form onSubmit={handleSubmit}>
+          <h2>Welcome to The Dashboard</h2>
 
-                        <div className="input-field">
-                        <i>🔒</i>
-                        <input type="password" placeholder="password" required/>
-                        </div>
+          <div className="input-field">
+            <i>👤</i>
+            <input type="text" placeholder="username" required />
+          </div>
 
-                        <button className="btn" type="submit">Login</button>
+          <div className="input-field">
+            <i>🔒</i>
+            <input type="password" placeholder="password" required />
+          </div>
 
-                        <div className="options">
-                        Forgot password? <Link href="/signupPage">or Sign Up</Link>
-                        </div>
-                </form>
-            </div>
+          <button className="btn" type="submit">
+            Login
+          </button>
+
+          <div className="options">
+            Forgot password? <Link href="/signupPage">or Sign Up</Link>
+          </div>
+        </form>
+      </div>
     </div>
-  )
+  );
 }
-
-export default Login
