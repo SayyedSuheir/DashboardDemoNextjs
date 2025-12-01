@@ -1,13 +1,7 @@
-// app/page.js
-// "use client";
-import Login from '../components/login/Login'; // default export, no curly braces
+"use client";
 
+import Login from "../components/login/Login";
 
 export default function Home() {
-  return (
-    <main>
-      <Login />
-      
-    </main>
-  );
+  return <Login />;
 }

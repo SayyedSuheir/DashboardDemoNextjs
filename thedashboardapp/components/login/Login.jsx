@@ -7,8 +7,8 @@ export default function Login() {
   const router = useRouter();
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // prevent full-page reload
-    // You can add login logic here (e.g., authentication)
+    e.preventDefault();
+    // Add your login validation logic here
     router.push("/dashboardhomepage");
   };
 

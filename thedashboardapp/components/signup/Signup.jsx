@@ -7,8 +7,8 @@ export default function Signup() {
   const router = useRouter();
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // prevent full-page reload
-    // You can add signup logic here before navigating
+    e.preventDefault();
+    // Add your signup logic here
     router.push("/dashboardhomepage");
   };
 
@@ -40,7 +40,7 @@ export default function Signup() {
           </button>
 
           <div className="options">
-            Forgot password? <Link href="/">or Login</Link>
+            Already have an account? <Link href="/">Login</Link>
           </div>
         </form>
       </div>
