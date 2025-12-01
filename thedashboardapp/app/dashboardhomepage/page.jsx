@@ -1,4 +1,4 @@
-
+"use client";
 import Cards from "@/components/cards/Cards";
 import SideNav from "@/components/sidenav/SideNav";
 

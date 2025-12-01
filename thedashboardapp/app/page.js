@@ -1,5 +1,5 @@
 // app/page.js
-"use client";
+// "use client";
 import Login from '../components/login/Login'; // default export, no curly braces
 
 
