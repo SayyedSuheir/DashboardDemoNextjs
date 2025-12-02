@@ -3,8 +3,10 @@ import connectDB from '@/app/lib/mongodb';
 import bcrypt from 'bcrypt';
 import { NextResponse } from 'next/server';
 
-export async function PoST(request){
+
+export async function POST(request){
     try{
+        await connectDB();
         const {name,email,password} = await request.json();
         const userExistense = await Users.findOne({email})
         if(userExistense){
@@ -23,6 +25,6 @@ export async function PoST(request){
         return NextResponse.json({message: "new User registered",status:201})
 
     }catch(err){
-        return NextResponse.json({error: "error in server", status:500});
+        return NextResponse.json({error: err.message, status:500});
     }
 }
