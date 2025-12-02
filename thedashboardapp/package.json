@@ -12,6 +12,7 @@
     "axios": "^1.13.2",
     "bcrypt": "^6.0.0",
     "bootstrap": "^5.3.8",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^9.0.0",
     "next": "13.5.2",
     "react": "18.2.0",

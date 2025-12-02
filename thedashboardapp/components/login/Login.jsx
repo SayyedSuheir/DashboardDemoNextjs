@@ -2,14 +2,32 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Login() {
   const router = useRouter();
+  const [email,setEmail] = useState("");
+  const [password , setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Add your login validation logic here
-    router.push("/dashboardhomepage");
+    
+     try {
+      const response = await axios.post("/api/login", { email, password });
+
+      if (response.status === 200 && response.data.token) {
+        localStorage.setItem("token", response.data.token);
+        router.push("/dashboardhomepage");
+      } else {
+        alert(response.data.error || "Login failed");
+      }
+    } catch (err) {
+      console.log(err);
+      alert("Login failed");
+    }
+    
   };
 
   return (
@@ -19,13 +37,21 @@ export default function Login() {
           <h2>Welcome to The Dashboard</h2>
 
           <div className="input-field">
-            <i>👤</i>
-            <input type="text" placeholder="username" required />
+            <i>📧</i>
+            <input 
+            type="email" 
+            placeholder="email" 
+            onChange={(e)=>setEmail(e.target.value)}
+            required />
           </div>
 
           <div className="input-field">
             <i>🔒</i>
-            <input type="password" placeholder="password" required />
+            <input 
+            type="password" 
+            placeholder="password" 
+            onChange={(e)=>setPassword(e.target.value)}
+            required />
           </div>
 
           <button className="btn" type="submit">
