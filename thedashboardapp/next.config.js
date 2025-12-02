@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-  reactCompiler: true,
+  reactStrictMode: true,
+  experimental: {
+    appDir: true
+  }
+  // reactCompiler: true, // not needed in Next.js 13
 };
 
-export default nextConfig;
+module.exports = nextConfig;
