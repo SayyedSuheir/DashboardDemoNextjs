@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 import Link from "next/link";
 
 export default function Cards() {
