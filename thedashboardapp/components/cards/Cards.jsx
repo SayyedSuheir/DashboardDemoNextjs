@@ -18,7 +18,7 @@ export default function Cards() {
                 <div className="card-body">
                     <h5 className="card-title">Product Card</h5>
                     <p className="card-text">Add, Edit, Remove</p>
-                    <Link href="#" className="btn btn-primary">Click Here</Link>
+                    <Link href="/productspage" className="btn btn-primary">Click Here</Link>
                 </div>
             </div>
     </div>

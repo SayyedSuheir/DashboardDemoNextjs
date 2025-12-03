@@ -9,7 +9,7 @@ export default function DashboardHomepage() {
   return (
     <div className="dashboard-home">
       <div className="dashboard-header">
-        <h1 >The Dashboard</h1>
+        <h1 className="text-red-500">The Dashboard</h1>
       </div>
       <div className="side-nav">
         <SideNav />

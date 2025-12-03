@@ -9,7 +9,12 @@ const productsSchema = new mongoose.Schema(
 
     type: {type:String, required:true, lowercase:true},
     
+    quantity : {type:Number,required: true, trim: true},
+   
     price: { type: Number, required: true, trim: true},
+
+    image: {type:String, trim:true}
+
   },
   { timestamps: true }
 );
