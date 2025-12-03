@@ -340,7 +340,32 @@ li{
 
 
 }
-
+.productspage-body{
+  height:70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: blue;
+}
+.search-product-body{
+  width:100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+}
+.search-product-body input{
+  width:80%;
+  height: 80%;
+}
+.table-product{
+  width:100%;
+  height:60vh;
+}
+.products-table{
+  width:100%;
+  height: 100%;
+}
 /* @media screen and (max-width:900px ){
 
   .productPage{
