@@ -1,5 +1,5 @@
 import Users from '@/models/Users';
-import connectDB from '@/app/lib/mongodb';
+import connectDB from '@/app/_lib/mongodb';
 import bcrypt from 'bcrypt';
 import { NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
@@ -37,9 +37,9 @@ export async function POST(request) {
 
         // 4️⃣ Create JWT token (optional)
         const token = jwt.sign(
-            { id: user._id, email: user.email },
+            { id: user._id, email: user.email,name: user.name },
             process.env.JWT_SECRET,
-            { expiresIn: "1h" }
+            { expiresIn: "5h" }
         );
 
         // 5️⃣ Return success response with token

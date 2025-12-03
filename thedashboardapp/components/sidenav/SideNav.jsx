@@ -2,8 +2,54 @@
 
 
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { jwtDecode } from 'jwt-decode'; 
+
+
 export default function SideNav() {
+    const [username, setUsername] = useState("");
+  const [loading, setLoading] = useState(true); // <- add loading state
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    router.push("/"); // redirect to login page
+  };
+
+  useEffect(() => {
+    // run this only on client
+    if (typeof window === "undefined") return;
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      router.push("/"); // redirect if not authenticated
+      return;
+    }
+
+    try {
+      const decoded = jwtDecode(token);
+
+      // check if token is expired
+      if (decoded.exp && decoded.exp * 1000 < Date.now()) {
+        localStorage.removeItem("token");
+        router.push("/");
+      } else {
+        setUsername(decoded.name ?? decoded.email);
+      }
+    } catch (err) {
+      console.error(err);
+      localStorage.removeItem("token");
+      router.push("/");
+    } finally {
+      setLoading(false); // stop loading
+    }
+  }, [router]);
+
+  if (loading) return null; // prevent rendering before username is loaded
+
+
   return (
     
     <nav className="menu" tabIndex="0">
@@ -18,7 +64,7 @@ export default function SideNav() {
                       />
                 </div>
                 <div className="avatar-username">
-                    <h2>John D.</h2>
+                  {username &&  <h2>Welcome {username}</h2>}
                 </div>
             </header>
             <ul className="sidenav-container">
@@ -67,8 +113,8 @@ export default function SideNav() {
                     </div>
               </div> 
               <div className="sidenav-footer">
-                <Link href="/"> 
-                    <div className="logout">
+                
+                    <div className="logout" onClick={handleLogout}>
                         
                             <div className="logout-img">
                             
@@ -85,7 +131,7 @@ export default function SideNav() {
                             </div>
                         
                     </div>
-                </Link>
+              
              </div> 
             </ul>
     </nav>

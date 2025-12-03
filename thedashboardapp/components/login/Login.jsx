@@ -16,9 +16,12 @@ export default function Login() {
     
      try {
       const response = await axios.post("/api/login", { email, password });
+        
 
       if (response.status === 200 && response.data.token) {
+        
         localStorage.setItem("token", response.data.token);
+        console.log("Dana: ", response.data)
         router.push("/dashboardhomepage");
       } else {
         alert(response.data.error || "Login failed");
@@ -41,6 +44,7 @@ export default function Login() {
             <input 
             type="email" 
             placeholder="email" 
+            value={email}
             onChange={(e)=>setEmail(e.target.value)}
             required />
           </div>
@@ -50,6 +54,7 @@ export default function Login() {
             <input 
             type="password" 
             placeholder="password" 
+            value={password}
             onChange={(e)=>setPassword(e.target.value)}
             required />
           </div>
